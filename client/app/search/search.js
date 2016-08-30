@@ -6,6 +6,10 @@ angular.module('pawMe.search', [])
     $scope.query = {};
     $scope.liked = [];
 
+    // var initalize = function() {
+    //   prompt
+    // };
+
     $scope.changeAnimalType = function(type) {
       $scope.query.animal = type;
       console.log(type);
@@ -35,7 +39,6 @@ angular.module('pawMe.search', [])
       if (!alreadyInList) {
         $scope.liked.push(entry);
       }        
-      console.log("liked--->", $scope.liked);
     };
 
   });
