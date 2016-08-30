@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Find my Paw</title>
+	<link rel="stylesheet" type="text/css" href="app/styles/style.css" />
+	<script src="/Users/wendycheung/Documents/hackreactor-07/MVP/node_modules/angular/angular.js"></script>
+	<script src="/Users/wendycheung/Documents/hackreactor-07/MVP/node_modules/angular-route/angular-route.js"></script>
+</head>
+<body ng-app="findMyPaw">
+
+	<div ng-controller="searchController">
+		<h2>Find my Paw</h2>
+		<button>cats</button>
+		<button>dogs</button>
+		<button>birds</button>
+		<button>small fluffy</button>
+		</br>
+		zipcode: 
+		<input type=text name="zipcode">
+		<button type="submit">Submit</button>
+	</div>
+
+<div ng-view></div>
+
+
+<script src="app/auth/auth.js"></script>
+<script src="app/likes/likes.js"></script>
+<script src="app/search/search.js"></script>
+<script src="app/services/services.js"></script>
+<script src="app/app.js"></script>
+
+</body>
+</html>
