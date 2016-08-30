@@ -1,16 +1,20 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Find my Paw</title>
-	<link rel="stylesheet" type="text/css" href="app/styles/style.css" />
-	<script src="/Users/wendycheung/Documents/hackreactor-07/MVP/node_modules/angular/angular.js"></script>
-	<script src="/Users/wendycheung/Documents/hackreactor-07/MVP/node_modules/angular-route/angular-route.js"></script>
+	<title>PawME</title>
+	<link rel="stylesheet" type="text/css" href="app/style/style.css" />
+	<script src="lib/angular/angular.js"></script>
+	<script src="lib/angular-route/angular-route.js"></script>
+	<!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script> -->
+	<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script> -->
+
 </head>
 <body ng-app="findMyPaw">
 
 	<div ng-controller="searchController">
-		<h2>Find my Paw</h2>
-		<button>cats</button>
+		<h2>PawME</h2>
+		<button ng-click="animal = cats">cats</button>
+		{{animal}}
 		<button>dogs</button>
 		<button>birds</button>
 		<button>small fluffy</button>
@@ -18,9 +22,12 @@
 		zipcode: 
 		<input type=text name="zipcode">
 		<button type="submit">Submit</button>
+	<div ng-repeat="entry in data track by $index | filter: data.contacts.zip.$t">
+		<div id="container">
+			<img src={{data[$index].media.photos.photo[0].$t}}/>
+		</div>
 	</div>
-
-<div ng-view></div>
+</div>
 
 
 <script src="app/auth/auth.js"></script>

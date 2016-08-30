@@ -1,61 +1,4 @@
-// var data = require('/sampleData.json');
-angular.module('findMyPaw.search', [])
-  .controller('searchController', function($scope, $http) {
-    $scope.data = data.petfinder.pets.pet;
-    $scope.animal = 'cats';
-
-  });
-    //cannot get json data
-    // $http.get('app/sampleData.json').then(function(res){
-    //   var data = res.data;
-    //   console.log(data);
-    // });
-
-//console.log("data", JSON.parse(data));
-//log in to session
-// $http({
-//   method: 'GET',
-//   url: 'http://api.petfinder.com/auth.getToken',
-//   data: {
-//     key: 'ef465d7abe45d4e4b28f5a50802d2605',
-//     sig: '19f16ce675d44a7b4a91cceca8554e93',
-//     format: 'json'
-//   }
-// })
-//   .then(function(res) {
-//     console.log('you are now in the session', res);
-//   }, function(err) {
-//     console.log('there is an error', err);
-//   });
-// $scope.fetchData = function() {  
-// };
-
-// http://api.petfinder.com/my.method?key=12345&arg1=foo&token=67890&sig=abcdef
-
-// $http({
-//   method: 'GET',
-//   url: 'http://api.petfinder.com/pet.find',
-//   data: {
-//     key: 'ef465d7abe45d4e4b28f5a50802d2605',
-//     sig: '19f16ce675d44a7b4a91cceca8554e93',
-//     animal: 'cat',
-//     location: 94066,
-//     output: 30,
-//     format: 'json',
-//     headers: {
-//       'Access-Control-Allow-Origin': '*'
-//     }
-//   }
-// }).then(function(res) {
-//   console.log("there is my animal data", res);
-//   $scope.content = response.data;
-//   $scope.statuscode = response.status;
-
-// }, function(err) {
-//   console.log("error", err);
-// })
-
-var data = {
+exports.data = {
   "@encoding": "iso-8859-1",
   "@version": "1.0",
   "petfinder": {
@@ -3242,4 +3185,4 @@ var data = {
     },
     "@xsi:noNamespaceSchemaLocation": "http://api.petfinder.com/schemas/0.9/petfinder.xsd"
   }
-};
+}

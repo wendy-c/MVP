@@ -18,12 +18,9 @@ app.use(bodyParser.json());
 app.use(express.static('./client'));
 
 //route request
-app.setHeaders('Access-Control-Allow-Origin', '*');
+//app.setHeaders('Access-Control-Allow-Origin', '*');
 
 app.get('/liked', function(req, res) {
-	res.set({
-		'Access-Control-Allow-Origin': '*'
-	});
   res.send();
 });
 
