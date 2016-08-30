@@ -3,28 +3,74 @@
 <head>
 	<title>PawME</title>
 	<link rel="stylesheet" type="text/css" href="app/style/style.css" />
+	<link rel="stylesheet" type="text/css" href="lib/bootstrap/dist/css/bootstrap.css">
 	<script src="lib/angular/angular.js"></script>
 	<script src="lib/angular-route/angular-route.js"></script>
-	<!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script> -->
-	<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script> -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
 
 </head>
-<body ng-app="findMyPaw">
-
+<body class="container" ng-app="pawMe">
 	<div ng-controller="searchController">
+		<div  class="col-md-12">
+		<div class="header">
+		<img id="paw" src="paw.png"/>
 		<h2>PawME</h2>
-		<button ng-click="animal = cats">cats</button>
-		{{animal}}
-		<button>dogs</button>
-		<button>birds</button>
-		<button>small fluffy</button>
+		</div>
+		<form name="queryReq" ng-submit="filterRequest(query.zip)" ng-model="animal">
+		<div class="btn-group" role="group" aria-label="...">
+			<button type="button" class="btn btn-default" ng-click="changeAnimalType('Cat')">Cats</button>
+			<button type="button" class="btn btn-default" ng-click="changeAnimalType('Dog')">Dogs</button>
+			<button type="button" class="btn btn-default" ng-click="changeAnimalType('Rabbit')">Small fluffy</button>
+			<button type="button" class="btn btn-default" ng-click="showAll()">Show All</button>
+		</div>
 		</br>
-		zipcode: 
-		<input type=text name="zipcode">
-		<button type="submit">Submit</button>
-	<div ng-repeat="entry in data track by $index | filter: data.contacts.zip.$t">
-		<div id="container">
-			<img src={{data[$index].media.photos.photo[0].$t}}/>
+			zipcode: 
+			<!-- check if form entry is invalid and that it has been used -->
+			<input class="zip" type=text ng-model="query.zip" placeholder="enter zip code" required ng-maxlength='5' ng-class="{'error': queryReq.$invalid && queryReq.$dirty}"/>
+			<!-- disable when submit if zip in invalid -->
+			<button type="submit" ng-disabled="queryReq.$invalid">Fetch!</button>
+			</form>
+
+			<div ng-show="queryReq.$error.required && queryReq.$dirty">
+				<h3>Please enter a valid zipcode</h3>
+			</div>
+		</div>
+		 	<button type="button" class="btn btn-default btn-md" ng-click="showFave = !showFave">
+				<span class="glyphicon glyphicon-heart" aria-hidden="true"></span> See my Paws
+			</button>
+		<div ng-show="showFave" class="liked">
+			<div ng-repeat="entry in liked track by $index">
+				<h3>{{$index + 1}}. {{entry.name.$t}}</h3>
+				<img src={{entry.media.photos.photo[1].$t}}/>
+				<p>
+					<b>I am</b> {{entry.name.$t}}
+					</br>
+					<b>I currently live in</b> {{entry.contact.city.$t||'somewhere on earth'}}
+					</br>
+					<b>You can reach me at </b>{{entry.contact.email.$t || entry.contact.phone.$t}}
+					</br>
+					<b>What human says about me: </b>{{entry.description.$t}}
+				</p>
+			</div>
+		</div>
+
+		<div ng-repeat="entry in filteredData track by $index">
+			<div id="container" class="col-sm-6">
+				<img src={{entry.media.photos.photo[1].$t}}/>
+				<p>
+					<b>I am</b> {{entry.name.$t}}
+					</br>
+					<b>I currently live in</b> {{entry.contact.city.$t||'somewhere on earth'}}
+					</br>
+					<b>You can reach me at </b>{{entry.contact.email.$t || entry.contact.phone.$t}}
+					</br>
+					<b>What human says about me: </b>{{entry.description.$t}}
+				</p>
+				<div ng-click="addToLike(entry)">
+				<button type="button" class="btn btn-default btn-md">
+					<span class="glyphicon glyphicon-heart" aria-hidden="true"></span> Paw Me!
+				</button>
+			</div>
 		</div>
 	</div>
 </div>

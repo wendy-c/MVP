@@ -1,0 +1,34 @@
+body {
+ margin: auto;
+}
+
+#container {
+	padding-top: 20px;
+	margin: auto;
+}
+
+#paw {
+	display: block;
+	float: left;
+	height: 60px;
+	position: relative;
+}
+
+.btn-group {
+	padding-bottom: 20px;
+}
+
+h2 {
+	margin: auto;
+	padding-top:20px; 
+}
+
+form {
+	padding: 20px;
+}
+
+.liked {
+	margin-top: 20px;
+	border: 1px solid black;
+	padding: 20px;
+}

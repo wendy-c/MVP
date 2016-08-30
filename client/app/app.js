@@ -1,27 +1,25 @@
 //a module is a collection of configuration and run blocks which get applied to the application during the bootstrap process, configuration blocks and run blocks
-angular.module('findMyPaw', ['findMyPaw.search'
-	])
+angular.module('pawMe', ['pawMe.search', 'pawMe.likes'])
 
-.config(function($httpProvider) {
-		//config takes injectables like Providers as pararms
-		//get executed during the provider registrations and configuration phase
+// .config(function($stateProvider, $urlRouterProvider) {
+//   //config takes injectables like Providers as pararms
+//   //get executed during the provider registrations and configuration phase
+//   $urlRouterProvider.otherwise('/search');
 
-  // $routeProvider.
-  // when('/', {
-  //   templateUrl: 'app/search/search.html',
-  //   controller: 'searchController'
-  // }).
-  // when('/liked', {
-  //   templateUrl: 'app/likes/liked.html',
-  //   controller: 'likesController'
-  // });
+//   $stateProvider
+//     .state('/search', {
+//       url: '/search',
+//       templateUrl: '/search.html'
+//     })
+//     .state('/liked', {
+//       url: '/liked',
+//       templateUrl: '/liked.html'
+//     })
 
-		//httpProvider
+// });
 
-	}).factory(function() {
+//	.run(function() {
+//run takes injectables like Providers as pararms
+//get execited after the injector is created and are used to kickstart the applcation
 
-	}).run(function() {
-		//run takes injectables like Providers as pararms
-		//get execited after the injector is created and are used to kickstart the applcation
-
-	});
+//});

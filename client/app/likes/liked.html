@@ -1,0 +1,21 @@
+<div>
+<div ng-repeat="entry in filteredData track by $index">
+			<div id="container" class="col-sm-6">
+				<img src={{entry.media.photos.photo[1].$t}}/>
+				<p>
+					<b>I am</b> {{entry.name.$t}}
+					</br>
+					<b>I currently live in</b> {{entry.contact.city.$t||'somewhere on earth'}}
+					</br>
+					<b>You can reach me at </b>{{entry.contact.email.$t || entry.contact.phone.$t}}
+					</br>
+					<b>What human says about me: </b>{{entry.description.$t}}
+				</p>
+				<div ng-click="addToLike(entry)">
+				<button type="button" class="btn btn-default btn-md">
+					<span class="glyphicon glyphicon-heart" aria-hidden="true"></span> Paw Me!
+				</button>
+				</div>
+			</div>
+		</div>
+</div>

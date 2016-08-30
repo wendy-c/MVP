@@ -1,8 +1,21 @@
-<div id="container">
-	<div ng-controller="search" ng-repeat="entry in data.petfinder.pets.pet">
-	<div>test</div>
-	{{animial: entry.$index.animal.$t}}
-	{{description: entry.$index.description.$t}}
-	{{hello}}
+<!-- <div id="container">
+
+	<div ng-repeat="entry in data track by $index">
+		<div id="container" ng-click="addToLike()" class="col-md-6">
+			<img src={{entry.media.photos.photo[0].$t}}/>
+			<p>
+				{{entry.animal.$t}}
+				</br>
+				{{entry.contacts.city.$t}}
+				</br>
+				{{entry.contacts.email.$t}}
+				</br>
+				{{entry.contacts.phone.$t}}
+				</br>
+				{{entry.description.$t}}
+			</p>
+		</div>
 	</div>
 </div>
+
+</div> -->

@@ -1,10 +1,46 @@
 // var data = require('/sampleData.json');
-angular.module('findMyPaw.search', [])
+angular.module('pawMe.search', [])
   .controller('searchController', function($scope, $http) {
     $scope.data = data.petfinder.pets.pet;
-    $scope.animal = 'cats';
+    $scope.filteredData = data.petfinder.pets.pet;
+    $scope.query = {};
+    $scope.liked = [];
+
+    $scope.changeAnimalType = function(type) {
+      $scope.query.animal = type;
+      console.log(type);
+    };
+
+    $scope.filterRequest = function(zip) {
+      $scope.filteredData = $scope.data.filter(function(entry) {
+        return entry.animal.$t === $scope.query.animal 
+          && entry.contact.zip.$t === zip;
+      });
+      return $scope.filteredData;
+    };
+
+    $scope.showAll = function() {
+      $scope.filteredData = data.petfinder.pets.pet;
+      return $scope.filteredData;
+    };
+
+
+    $scope.addToLike = function(entry) {
+      var alreadyInList = false;
+      $scope.liked.forEach(function(item) {
+        if (item.description.$t === entry.description.$t) {
+          alreadyInList = true;
+        }
+      });
+      if (!alreadyInList) {
+        $scope.liked.push(entry);
+      }        
+      console.log("liked--->", $scope.liked);
+    };
 
   });
+
+
     //cannot get json data
     // $http.get('app/sampleData.json').then(function(res){
     //   var data = res.data;
