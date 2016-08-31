@@ -1,5 +1,5 @@
 //a module is a collection of configuration and run blocks which get applied to the application during the bootstrap process, configuration blocks and run blocks
-angular.module('pawMe', ['pawMe.search', 'pawMe.likes'])
+angular.module('pawMe', ['pawMe.search'])
 
 // .config(function($stateProvider, $urlRouterProvider) {
 //   //config takes injectables like Providers as pararms

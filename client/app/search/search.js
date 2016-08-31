@@ -6,10 +6,6 @@ angular.module('pawMe.search', [])
     $scope.query = {};
     $scope.liked = [];
 
-    // var initalize = function() {
-    //   prompt
-    // };
-
     $scope.changeAnimalType = function(type) {
       $scope.query.animal = type;
       console.log(type);
@@ -38,10 +34,75 @@ angular.module('pawMe.search', [])
       });
       if (!alreadyInList) {
         $scope.liked.push(entry);
+        $http.post('/liked', entry);
       }        
     };
 
-  });
+    //request to server
+    $scope.getToken = function() {
+      $http({
+        method: 'GET',
+        url: '/gettoken',
+        data: {
+          key: 'ef465d7abe45d4e4b28f5a50802d2605',
+          sig: '19f16ce675d44a7b4a91cceca8554e93'
+        }
+      }).then(function(res) {
+          console.log('you are now in the session', res);
+        }, function(err) {
+          console.log('there is an error', err);
+        });
+    }
+
+    $scope.getpets = function() {
+      console.log($scope.query.animal, $scope.query.zip);
+
+      var config = {};
+      // config.data =  {
+      //     key: 'ef465d7abe45d4e4b28f5a50802d2605',
+      //     sig: '19f16ce675d44a7b4a91cceca8554e93',
+      //     location: 94132,
+      //     output: 36,
+      //     format: 'json'
+      //   };
+      config.data = {
+        pet: 'dog'
+      }
+
+      console.log('config', config);
+
+      $http.get('/getpets', config)
+        .then(function(res) {
+          console.log("here is my animal data", res);
+          $scope.content = res.data;
+          $scope.statuscode = res.status;
+          console.log('get response', res)
+        }, function(err) {
+          console.log("error", err);
+        });    
+    }
+
+    setTimeout($scope.getToken, 30000);
+
+
+});
+  //   $http({
+  //     method: 'GET',
+  //     url: 'http://api.petfinder.com/auth.getToken',
+  //     data: {
+  //       key: 'ef465d7abe45d4e4b28f5a50802d2605',
+  //       sig: '19f16ce675d44a7b4a91cceca8554e93',
+  //       format: 'json'
+  //     }
+  //   })
+  //     .then(function(res) {
+  //       console.log('you are now in the session', res);
+  //     }, function(err) {
+  //       console.log('there is an error', err);
+  //     });
+  //   $scope.fetchData = function() {  
+  //   };
+  // });
 
 
     //cannot get json data
@@ -52,22 +113,6 @@ angular.module('pawMe.search', [])
 
 //console.log("data", JSON.parse(data));
 //log in to session
-// $http({
-//   method: 'GET',
-//   url: 'http://api.petfinder.com/auth.getToken',
-//   data: {
-//     key: 'ef465d7abe45d4e4b28f5a50802d2605',
-//     sig: '19f16ce675d44a7b4a91cceca8554e93',
-//     format: 'json'
-//   }
-// })
-//   .then(function(res) {
-//     console.log('you are now in the session', res);
-//   }, function(err) {
-//     console.log('there is an error', err);
-//   });
-// $scope.fetchData = function() {  
-// };
 
 // http://api.petfinder.com/my.method?key=12345&arg1=foo&token=67890&sig=abcdef
 

@@ -16,6 +16,7 @@
 		<img id="paw" src="paw.png"/>
 		<h2>PawME</h2>
 		</div>
+
 		<form name="queryReq" ng-submit="filterRequest(query.zip)" ng-model="animal">
 		<div class="btn-group" role="group" aria-label="...">
 			<button type="button" class="btn btn-default" ng-click="changeAnimalType('Cat')">Cats</button>
@@ -30,7 +31,6 @@
 			<!-- disable when submit if zip in invalid -->
 			<button type="submit" ng-disabled="queryReq.$invalid">Fetch!</button>
 			</form>
-
 			<div ng-show="queryReq.$error.required && queryReq.$dirty">
 				<h3>Please enter a valid zipcode</h3>
 			</div>
@@ -75,11 +75,7 @@
 	</div>
 </div>
 
-
-<script src="app/auth/auth.js"></script>
-<script src="app/likes/likes.js"></script>
 <script src="app/search/search.js"></script>
-<script src="app/services/services.js"></script>
 <script src="app/app.js"></script>
 
 </body>
